@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Card Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            display: flex;
+            background-color: #333;
+            padding: 1em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin-right: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        section {
+            padding: 2em;
+            overflow: hidden;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            animation: fade-in 0.7s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            animation-duration: 0.8s;
+            animation-fill-mode: forwards;
+            background: linear-gradient(145deg, #e4e4e4, #ffffff); /* Background for frame effect */
+            border: 2px solid #d4af37; /* Gold border for fancy look */
+            padding: 10px; /* Space between image and frame */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            border-radius: 10px; /* Rounded corners for the frame */
+        }
+
+        .image-container:nth-child(odd) {
+            animation-name: slide-in-left;
+        }
+
+        .image-container:nth-child(even) {
+            animation-name: slide-in-right;
+        }
+
+        .image-container img {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 5px; /* Rounding image corners */
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            font-size: 16px;
+            text-align: center;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+        @keyframes slide-in-left {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-in-right {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" onclick="showTab('gallery')">Card Gallery</a>
+        <a href="#" onclick="showTab('how-to-play')">How to Play</a>
+        <a href="#" onclick="showTab('news-feed')">News Feed</a>
+    </nav>
+    <section>
+        <div id="gallery" class="tab-content active">
+            <h1>Card Gallery</h1>
+            <div class="image-gallery" id="gallery-images"></div>
+        </div>
+        <div id="how-to-play" class="tab-content">
+            <h1>How to Play</h1>
+            <p>Instructions on how to play the Pokémon card game.</p>
+        </div>
+        <div id="news-feed" class="tab-content">
+            <h1>News Feed</h1>
+            <p>Latest updates and news about Pokémon cards.</p>
+        </div>
+    </section>
+    <script>
+        // Show the active tab content
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Load images dynamically from a folder
+        function loadGalleryImages(folderPath, containerId) {
+            const imageContainer = document.getElementById(containerId);
+            const images = [
+                '1.jpg', '2.jpg', '3.png', '4.PNG', '5.jpg', '6.png' // Example image names
+            ];
+            
+            images.forEach((image, index) => {
+                const imgElement = document.createElement('div');
+                imgElement.className = 'image-container';
+                imgElement.innerHTML = `
+                    <img src="${folderPath}/${image}" alt="Pokémon Card ${index + 1}">
+                    <div class="overlay">Description of Pokémon Card ${index + 1}</div>
+                `;
+                imageContainer.appendChild(imgElement);
+            });
+        }
+
+        // Specify folder path and container ID
+        loadGalleryImages('images', 'gallery-images');
+    </script>
+</body>
+</html>
