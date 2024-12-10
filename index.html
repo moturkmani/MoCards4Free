@@ -3,70 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Card Website</title>
+    <title>Tabs with Hamburger Menu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="menu">
+            <a href="#news-feed" onclick="showTab('news-feed')">News Feed</a>
+            <a href="#tab2" onclick="showTab('tab2')">Tab 2</a>
+            <a href="#tab3" onclick="showTab('tab3')">Tab 3</a>
+        </div>
+    </div>
 
-    <nav>
-        <a href="#" onclick="showTab('news-feed')">News Feed</a>
-        <a href="#" onclick="showTab('upcoming-cards')">Upcoming Cards</a>
-        <a href="#" onclick="showTab('card-gallery')">Card Gallery</a>
-        <a href="#" onclick="showTab('how-to-play')">How to Play</a>
-    </nav>
+    <!-- Main Content -->
+    <div id="tabs">
+        <div id="news-feed" class="tab-content">
+            <h2>News Feed</h2>
+            <ul id="news-list">
+                <!-- News content will be dynamically populated here -->
+            </ul>
+        </div>
+        <div id="tab2" class="tab-content" style="display: none;">Content for Tab 2</div>
+        <div id="tab3" class="tab-content" style="display: none;">Content for Tab 3</div>
+    </div>
 
-    <section>
-        <div id="news-feed" class="tab-content active">
-            <h1>Here are the upcoming Lives!</h1>
-            <div id="news-container"></div>
-        </div>
-        <div id="upcoming-cards" class="tab-content">
-            <p>Details about upcoming cards.</p>
-        </div>
-        <div id="card-gallery" class="tab-content">
-            <p>Below are all the cards you can win.</p>
-            <div id="gallery-images"></div>
-        </div>
-        <div id="how-to-play" class="tab-content">
-            <h1>How to Play</h1>
-            <p>Instructions on how to play the Pokémon card game.</p>
-        </div>
-    </section>
-
+    <!-- JavaScript -->
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
         function showTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+            tabs.forEach(tab => tab.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+            document.getElementById('menu').classList.remove('show');
         }
 
-        async function loadNews() {
-            try {
-                // Use a relative path for the local file
-                const response = await fetch('./news.json');
-        
-                if (!response.ok) {
-                    throw new Error('Failed to load news JSON');
-                }
-        
-                const newsData = await response.json();
-                const newsContainer = document.getElementById('news-container');
-        
-                newsData.forEach(newsItem => {
-                    const newsBlock = document.createElement('div');
-                    newsBlock.className = 'news-block';
-                    newsBlock.innerHTML = `<strong>${newsItem.title}</strong><p>${newsItem.content}</p>`;
-                    newsContainer.appendChild(newsBlock);
-                });
-            } catch (error) {
-                console.error('Error loading news:', error);
-                const newsContainer = document.getElementById('news-container');
-                newsContainer.innerHTML = '<p>Failed to load news. Please try again later.</p>';
-            }
+        // Fetch and display news content
+        function fetchNews() {
+            fetch('./news.json') // Adjust the path if the JSON file is located elsewhere
+                .then(response => response.json())
+                .then(data => {
+                    const newsList = document.getElementById('news-list');
+                    newsList.innerHTML = ''; // Clear existing content
+                    data.news.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item.title;
+                        newsList.appendChild(li);
+                    });
+                })
+                .catch(error => console.error('Error fetching news:', error));
         }
 
-        document.addEventListener('DOMContentLoaded', loadNews);
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('news-feed'); // Show News Feed by default
+            fetchNews();         // Fetch and display news
+        });
     </script>
-
 </body>
 </html>
