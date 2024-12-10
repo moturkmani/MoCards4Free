@@ -166,13 +166,13 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // Fetch image URLs from the images.json file and load them into the gallery
-        fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images/images.json')
-            .then(response => response.json())
-            .then(data => {
-                loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images', 'gallery-images', data.images);
-            });
+        // Directly specify image names in an array
+        const images = [
+            '17338435047454691819521211679192.jpg', '17338450305941787574679447129686.jpg', 'Screenshot_20241210_064951_Chrome.jpg', 'image4.jpg', 'image5.jpg', // Example image names
+            'image6.jpg', 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg'
+        ];
 
+        // Manually load images into the gallery
         function loadGalleryImages(folderBaseUrl, containerId, images) {
             const imageContainer = document.getElementById(containerId);
 
@@ -186,6 +186,9 @@
                 imageContainer.appendChild(imgElement);
             });
         }
+
+        // Load the images from the specified folder URL
+        loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images', 'gallery-images', images);
     </script>
 </body>
 </html>
