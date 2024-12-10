@@ -169,25 +169,30 @@
         }
 
         // Load images dynamically from a folder
-        function loadGalleryImages(folderPath, containerId) {
+        function loadGalleryImages(folderBaseUrl, containerId) {
             const imageContainer = document.getElementById(containerId);
             const images = [
-                '17338435047454691819521211679192.jpg', '20241210_050841.jpg', 'Screenshot_20241207_093544_Skyscanner.jpg', 'Screenshot_20241210_064951_Chrome.jpg', 'Screenshot_20241210_065129_Chrome.jpg', '6.png' // Example image names
+                '17338435047454691819521211679192.jpg', 
+                '20241210_050841.jpg', 
+                'Screenshot_20241207_093544_Skyscanner.jpg', 
+                'Screenshot_20241210_064951_Chrome.jpg', 
+                'Screenshot_20241210_065129_Chrome.jpg', 
+                '6.png' // Example image names
             ];
             
             images.forEach((image, index) => {
                 const imgElement = document.createElement('div');
                 imgElement.className = 'image-container';
                 imgElement.innerHTML = `
-                    <img src="${folderPath}/${image}" alt="Pokémon Card ${index + 1}">
+                    <img src="${folderBaseUrl}/${image}" alt="Pokémon Card ${index + 1}">
                     <div class="overlay">Description of Pokémon Card ${index + 1}</div>
                 `;
                 imageContainer.appendChild(imgElement);
             });
         }
 
-        // Specify folder path and container ID
-        loadGalleryImages('images', 'gallery-images');
+        // Specify folder base URL and container ID
+        loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images', 'gallery-images');
     </script>
 </body>
 </html>
