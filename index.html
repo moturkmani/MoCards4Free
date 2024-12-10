@@ -7,9 +7,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
         }
         nav {
             background-color: #343a40;
@@ -22,7 +22,6 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            cursor: pointer;
         }
         nav a:hover {
             text-decoration: underline;
@@ -30,117 +29,58 @@
         .tab-content {
             display: none;
             padding: 20px;
-            animation: fadeIn 1s;
         }
         .tab-content.active {
             display: block;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
         .news-block {
-            word-wrap: break-word; /* Ensures long words or URLs break to fit within the container */
-            white-space: normal; /* Allows text to wrap naturally */
-            line-height: 1.6; /* Improves readability with proper spacing between lines */
-            max-width: 100%; /* Keeps content within its container */
+            word-wrap: break-word;
+            white-space: normal;
+            line-height: 1.6;
+            max-width: 100%;
             margin: 20px 0;
             padding: 15px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: scrollAnimation 1s;
-            box-sizing: border-box; /* Ensures padding does not exceed the width */
-            font-size: 16px;
-            color: #333;
-}
-
-        /* Ensure responsiveness for smaller screens */
+        }
         @media (max-width: 768px) {
             .news-block {
                 padding: 10px;
                 font-size: 14px;
-    }
-}
-
-        }
-        @keyframes scrollAnimation {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
             }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        .news-block.hidden {
-            opacity: 0;
-            transform: translateY(-30px);
         }
     </style>
 </head>
+
 <body>
+
     <nav>
-        <a href="#" onclick="showTab('news-feed')"></a>
-        <a href="#" onclick="showTab('upcoming-cards')">Below are cards that are coming soon!</a>
-        <a href="#" onclick="showTab('card-gallery')">Here is a gallery of the available cards you can win.</a>
+        <a href="#" onclick="showTab('news-feed')">News Feed</a>
+        <a href="#" onclick="showTab('upcoming-cards')">Upcoming Cards</a>
+        <a href="#" onclick="showTab('card-gallery')">Card Gallery</a>
         <a href="#" onclick="showTab('how-to-play')">How to Play</a>
     </nav>
+
     <section>
         <div id="news-feed" class="tab-content active">
-            <h1>News Feed</h1>
-            <div id="news-container">
-                <!-- Uncomment and add news below -->
-                <div class="news-block">The franchise originated as a pair of role-playing games developed by Game Freak,
-                    from an original concept by its founder, Satoshi Tajiri. Released on the Game Boy on February 27, 1996
-                    , the games became sleeper hits and were followed by manga series, a trading card game, and anime series and films.
-                    From 1998 to 2000, Pokémon was exported to the rest of the world, creating an unprecedented global phenomenon dubbed
-                    "Pokémania". By 2002, the craze had ended, after which Pokémon became a fixture in popular culture, with new products
-                    being released to this day. In the summer of 2016, the franchise spawned a second craze with the release of Pokémon Go,
-                    an augmented reality game developed by Niantic.</div>
-                <div class="news-block">The franchise originated as a pair of role-playing games developed by Game Freak,
-                    from an original concept by its founder, Satoshi Tajiri. Released on the Game Boy on February 27, 1996
-                    , the games became sleeper hits and were followed by manga series, a trading card game, and anime series and films.
-                    From 1998 to 2000, Pokémon was exported to the rest of the world, creating an unprecedented global phenomenon dubbed
-                    "Pokémania". By 2002, the craze had ended, after which Pokémon became a fixture in popular culture, with new products
-                    being released to this day. In the summer of 2016, the franchise spawned a second craze with the release of Pokémon Go,
-                    an augmented reality game developed by Niantic.</div>
-                <div class="news-block">The franchise originated as a pair of role-playing games developed by Game Freak,
-                    from an original concept by its founder, Satoshi Tajiri. Released on the Game Boy on February 27, 1996
-                    , the games became sleeper hits and were followed by manga series, a trading card game, and anime series and films.
-                    From 1998 to 2000, Pokémon was exported to the rest of the world, creating an unprecedented global phenomenon dubbed
-                    "Pokémania". By 2002, the craze had ended, after which Pokémon became a fixture in popular culture, with new products
-                    being released to this day. In the summer of 2016, the franchise spawned a second craze with the release of Pokémon Go,
-                    an augmented reality game developed by Niantic.</div>
-                <!-- <div class="news-block">Latest news 4 goes here...</div> -->
-                <!-- <div class="news-block">Latest news 5 goes here...</div> -->
-                <!-- <div class="news-block">Latest news 6 goes here...</div> -->
-                <!-- <div class="news-block">Latest news 7 goes here...</div> -->
-                <!-- <div class="news-block">Latest news 8 goes here...</div> -->
-                <!-- <div class="news-block">Latest news 9 goes here...</div> -->
-                <!-- <div class="news-block">Latest news 10 goes here...</div> -->
-            </div>
+            <h1>Here are the upcoming Lives!</h1>
+            <div id="news-container"></div>
         </div>
         <div id="upcoming-cards" class="tab-content">
             <h1>Upcoming Cards</h1>
             <p>Details about upcoming cards.</p>
         </div>
         <div id="card-gallery" class="tab-content">
-            <h1>Card Gallery</h1>
-            <div class="image-gallery" id="gallery-images">
-                <!-- Gallery content will load dynamically -->
-            </div>
+            <h1>Below are all the cards you can win.</h1>
+            <div id="gallery-images"></div>
         </div>
         <div id="how-to-play" class="tab-content">
             <h1>How to Play</h1>
             <p>Instructions on how to play the Pokémon card game.</p>
         </div>
     </section>
+
     <script>
         function showTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
@@ -148,18 +88,30 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // Animation on scroll
-        const newsBlocks = document.querySelectorAll('.news-block');
-        window.addEventListener('scroll', () => {
-            newsBlocks.forEach(block => {
-                const rect = block.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    block.classList.remove('hidden');
-                } else {
-                    block.classList.add('hidden');
+        async function loadNews() {
+            try {
+                const response = await fetch('main/images/news.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load news JSON');
                 }
-            });
-        });
+                const newsData = await response.json();
+                const newsContainer = document.getElementById('news-container');
+
+                newsData.forEach(newsItem => {
+                    const newsBlock = document.createElement('div');
+                    newsBlock.className = 'news-block';
+                    newsBlock.innerHTML = `<strong>${newsItem.title}</strong><p>${newsItem.content}</p>`;
+                    newsContainer.appendChild(newsBlock);
+                });
+            } catch (error) {
+                console.error('Error loading news:', error);
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = '<p>Failed to load news. Please try again later.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadNews);
     </script>
+
 </body>
 </html>
