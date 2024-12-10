@@ -5,7 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Card Gallery</title>
     <style>
-        /* Styling here remains the same */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            display: flex;
+            background-color: #333;
+            padding: 1em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin-right: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        section {
+            padding: 2em;
+            overflow: hidden;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            animation: fade-in 0.7s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            animation-duration: 0.8s;
+            animation-fill-mode: forwards;
+            background: linear-gradient(145deg, #e4e4e4, #ffffff); /* Background for frame effect */
+            border: 2px solid #d4af37; /* Gold border for fancy look */
+            padding: 10px; /* Space between image and frame */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            border-radius: 10px; /* Rounded corners for the frame */
+            overflow: hidden; /* Prevent overflow of the enlarged image */
+            position: relative;
+        }
+
+        .image-container img {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 5px; /* Rounding image corners */
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: blur(5px); /* Initially blur the image */
+        }
+
+        /* Enlarge image on hover */
+        .image-container:hover img {
+            transform: scale(1.5); /* Enlarge the image */
+            filter: blur(0px); /* Remove the blur when hovering */
+        }
+
+        /* Create an overlay effect when hovering */
+        .image-container:hover .overlay {
+            opacity: 1; /* Show the overlay on hover */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            font-size: 16px;
+            text-align: center;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes slide-in-left {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-in-right {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -36,22 +166,21 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // Fetch and display images from GitHub
-        fetch('https://raw.githubusercontent.com/username/repo/main/images.json') // Use the URL of your hosted images.json file on GitHub
+        // Fetch image URLs from the images.json file and load them into the gallery
+        fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images/images.json')
             .then(response => response.json())
             .then(data => {
-                loadGalleryImages(data.images);
+                loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images', 'gallery-images', data.images);
             });
 
-        // Function to load images dynamically
-        function loadGalleryImages(images) {
-            const imageContainer = document.getElementById('gallery-images');
+        function loadGalleryImages(folderBaseUrl, containerId, images) {
+            const imageContainer = document.getElementById(containerId);
 
             images.forEach((image, index) => {
                 const imgElement = document.createElement('div');
                 imgElement.className = 'image-container';
                 imgElement.innerHTML = `
-                    <img src="${image}" alt="Pokémon Card ${index + 1}">
+                    <img src="${folderBaseUrl}/${image}" alt="Pokémon Card ${index + 1}">
                     <div class="overlay">Description of Pokémon Card ${index + 1}</div>
                 `;
                 imageContainer.appendChild(imgElement);
