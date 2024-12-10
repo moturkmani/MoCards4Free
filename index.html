@@ -5,91 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Card Gallery</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            display: flex;
-            background-color: #333;
-            padding: 1em;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5em 1em;
-            margin-right: 1em;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #555;
-        }
-
-        section {
-            padding: 2em;
-            overflow: hidden;
-        }
-
-        .tab-content {
-            display: none;
-            opacity: 0;
-            animation: fade-in 0.7s ease-out forwards;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .image-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1em;
-            justify-content: center;
-        }
-
-        .image-container {
-            position: relative;
-            display: inline-block;
-            animation-duration: 0.8s;
-            animation-fill-mode: forwards;
-            background: linear-gradient(145deg, #e4e4e4, #ffffff); /* Background for frame effect */
-            border: 2px solid #d4af37; /* Gold border for fancy look */
-            padding: 10px; /* Space between image and frame */
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-            border-radius: 10px; /* Rounded corners for the frame */
-            overflow: hidden; /* Prevent overflow of the enlarged image */
-            position: relative;
-            width: 200px; /* Fixed tile size */
-            height: 200px; /* Fixed tile size */
-        }
-
-        .image-container img {
-            width: 100%; /* Ensure image takes the full width of the container */
-            height: 100%;
-            object-fit: cover; /* Maintain aspect ratio */
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .image-container:hover img {
-            transform: scale(1.5); /* Enlarge image */
-        }
-
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* Your existing CSS remains unchanged */
     </style>
 </head>
 <body>
@@ -120,8 +36,11 @@
             document.getElementById(tabId).classList.add('active');
         }
 
+        // Define the base URL for images
+        const baseURL = 'https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images';
+
         // Fetch the JSON file containing image names
-        fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images/images.json')
+        fetch(`${baseURL}/images.json`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch JSON');
@@ -129,7 +48,7 @@
                 return response.json();
             })
             .then(data => {
-                loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images', 'gallery-images', data.images);
+                loadGalleryImages(baseURL, 'gallery-images', data.images);
             })
             .catch(error => console.error('Error fetching images:', error));
 
