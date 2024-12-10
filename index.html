@@ -48,7 +48,7 @@
                 return response.json();
             })
             .then(data => {
-                loadGalleryImages(baseURL, 'gallery-images', data.images);
+                loadGalleryImages(baseURL, 'image-gallery', data.images);
             })
             .catch(error => console.error('Error fetching images:', error));
 
