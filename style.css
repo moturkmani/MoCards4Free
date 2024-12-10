@@ -11,18 +11,21 @@ nav {
     background-color: #343a40;
     color: white;
     display: flex;
-    justify-content: center; /* Centers items horizontally */
-    flex-wrap: wrap; /* Allows wrapping for smaller screens */
-    padding: 1rem 0;
+    justify-content: space-between; /* Distributes links with even spacing */
+    align-items: center; /* Centers items vertically */
+    padding: 1rem 2rem;
 }
 
+/* Adjust nav links for even spacing */
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin: 0 1rem; /* Adds spacing between links */
+    padding: 0.5rem 1rem;
+    text-align: center;
 }
 
+/* Change link appearance on hover */
 nav a:hover {
     text-decoration: underline;
 }
@@ -52,17 +55,19 @@ nav a:hover {
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
-    .news-block {
-        padding: 10px;
-        font-size: 14px;
-    }
-
     nav {
-        flex-direction: column; /* Stacks links vertically */
-        align-items: center; /* Centers links in the middle */
+        flex-direction: row; /* Ensures nav items stay on a single row */
+        justify-content: space-around; /* Distributes links evenly with space around them */
+        padding: 0.5rem;
     }
 
     nav a {
-        margin: 0.5rem 0; /* Adds vertical spacing between links */
+        padding: 0.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    nav a:hover {
+        text-decoration: none;
     }
 }
