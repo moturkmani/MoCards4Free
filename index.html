@@ -129,7 +129,7 @@
                 return response.json();
             })
             .then(data => {
-                loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images', 'gallery-images', data.images);
+                loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images', data.images);
             })
             .catch(error => console.error('Error fetching images:', error));
 
