@@ -3,100 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Card Gallery</title>
+    <title>Pokémon Card Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #f8f9fa;
         }
-
         nav {
-            background-color: #333;
+            background-color: #343a40;
             color: white;
             display: flex;
-            justify-content: center;
-            padding: 10px 0;
+            justify-content: space-around;
+            padding: 1rem 0;
         }
-
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
         }
-
         nav a:hover {
-            background-color: gold;
-            border-radius: 5px;
+            text-decoration: underline;
         }
-
         .tab-content {
             display: none;
             padding: 20px;
+            animation: fadeIn 1s;
         }
-
         .tab-content.active {
             display: block;
         }
-
-        #gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .card-tile {
-            width: 200px;
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-            border: 3px solid gold;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transform: translateX(-100%);
-            animation: slide-in 1s ease-in-out forwards;
-        }
-
-        .card-tile:nth-child(even) {
-            animation: slide-in-right 1s ease-in-out forwards;
-        }
-
-        .card-tile img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .card-tile:hover img {
-            transform: scale(1.2);
-        }
-
-        @keyframes slide-in {
+        @keyframes fadeIn {
             from {
-                transform: translateX(-100%);
                 opacity: 0;
             }
             to {
-                transform: translateX(0);
                 opacity: 1;
             }
         }
-
-        @keyframes slide-in-right {
+        .news-block {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: scrollAnimation 1s;
+        }
+        @keyframes scrollAnimation {
             from {
-                transform: translateX(100%);
+                transform: translateY(30px);
                 opacity: 0;
             }
             to {
-                transform: translateX(0);
+                transform: translateY(0);
                 opacity: 1;
             }
+        }
+        .news-block.hidden {
+            opacity: 0;
+            transform: translateY(-30px);
         }
     </style>
 </head>
@@ -104,32 +71,41 @@
     <nav>
         <a href="#" onclick="showTab('news-feed')">News Feed</a>
         <a href="#" onclick="showTab('upcoming-cards')">Upcoming Cards</a>
-        <a href="#" onclick="showTab('gallery')">Card Gallery</a>
+        <a href="#" onclick="showTab('card-gallery')">Card Gallery</a>
         <a href="#" onclick="showTab('how-to-play')">How to Play</a>
     </nav>
-
     <section>
         <div id="news-feed" class="tab-content active">
             <h1>News Feed</h1>
-            <p>Latest updates and news about Pokémon cards.</p>
+            <div id="news-container">
+                <!-- Uncomment and add news below -->
+                <!-- <div class="news-block">Latest news 1 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 2 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 3 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 4 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 5 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 6 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 7 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 8 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 9 goes here...</div> -->
+                <!-- <div class="news-block">Latest news 10 goes here...</div> -->
+            </div>
         </div>
-
         <div id="upcoming-cards" class="tab-content">
             <h1>Upcoming Cards</h1>
-            <p>Details about upcoming Pokémon card releases.</p>
+            <p>Details about upcoming cards.</p>
         </div>
-
-        <div id="gallery" class="tab-content">
+        <div id="card-gallery" class="tab-content">
             <h1>Card Gallery</h1>
-            <div id="gallery-images"></div>
+            <div class="image-gallery" id="gallery-images">
+                <!-- Gallery content will load dynamically -->
+            </div>
         </div>
-
         <div id="how-to-play" class="tab-content">
             <h1>How to Play</h1>
             <p>Instructions on how to play the Pokémon card game.</p>
         </div>
     </section>
-
     <script>
         function showTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
@@ -137,24 +113,17 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        const images = [
-            "image1.jpg",
-            "image2.jpg",
-            "image3.jpg",
-            "image4.jpg",
-            "image5.jpg",
-            "image6.jpg"
-        ];
-
-        const galleryContainer = document.getElementById('gallery-images');
-
-        images.forEach((image, index) => {
-            const cardTile = document.createElement('div');
-            cardTile.className = 'card-tile';
-            cardTile.style.animationDelay = `${index * 0.1}s`;
-
-            cardTile.innerHTML = `<img src="images/${image}" alt="Pokémon Card">`;
-            galleryContainer.appendChild(cardTile);
+        // Animation on scroll
+        const newsBlocks = document.querySelectorAll('.news-block');
+        window.addEventListener('scroll', () => {
+            newsBlocks.forEach(block => {
+                const rect = block.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    block.classList.remove('hidden');
+                } else {
+                    block.classList.add('hidden');
+                }
+            });
         });
     </script>
 </body>
