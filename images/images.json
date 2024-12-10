@@ -1,11 +1,10 @@
 {
-  "images": [
-    "17338435047454691819521211679192.jpg",
-    "20241210_050841.jpg",
-    "test2.jpg",
-    "test3.jpg",
-    "test4.jpg",
-    "123.jpg"
-    // Add more image names here
-  ]
+    "images": [
+        "17338435047454691819521211679192.jpg",
+        "20241210_050841.jpg",
+        "Screenshot_20241207_093544_Skyscanner.jpg",
+        "Screenshot_20241210_064951_Chrome.jpg",
+        "Screenshot_20241210_065129_Chrome.jpg",
+        "6.png"
+    ]
 }
