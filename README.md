@@ -32,7 +32,7 @@ The **Cards4Free** project is a gallery-based web application designed to showca
 ```
 Cards4Free/
 ├── index.html          # Main HTML file for the website.
-├── images/             #Folder where the images.json file is located
+├── images/             # Folder where the images.json file is located
 ├── README.md           # File containing details about the trivia game and structure
 
 ### **Getting Started**
