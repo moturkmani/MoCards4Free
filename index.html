@@ -4,55 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Card Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-        nav {
-            background-color: #343a40;
-            color: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 1rem 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .news-block {
-            word-wrap: break-word;
-            white-space: normal;
-            line-height: 1.6;
-            max-width: 100%;
-            margin: 20px 0;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        @media (max-width: 768px) {
-            .news-block {
-                padding: 10px;
-                font-size: 14px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <nav>
@@ -88,29 +41,28 @@
         }
 
         async function loadNews() {
-        try {
-            // Correct raw URL for GitHub-hosted JSON
-            const response = await fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images/news.json');
-    
-            if (!response.ok) {
-                throw new Error('Failed to load news JSON');
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images/news.json');
+
+                if (!response.ok) {
+                    throw new Error('Failed to load news JSON');
+                }
+
+                const newsData = await response.json();
+                const newsContainer = document.getElementById('news-container');
+
+                newsData.forEach(newsItem => {
+                    const newsBlock = document.createElement('div');
+                    newsBlock.className = 'news-block';
+                    newsBlock.innerHTML = `<strong>${newsItem.title}</strong><p>${newsItem.content}</p>`;
+                    newsContainer.appendChild(newsBlock);
+                });
+            } catch (error) {
+                console.error('Error loading news:', error);
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = '<p>Failed to load news. Please try again later.</p>';
             }
-    
-            const newsData = await response.json();
-            const newsContainer = document.getElementById('news-container');
-    
-            newsData.forEach(newsItem => {
-                const newsBlock = document.createElement('div');
-                newsBlock.className = 'news-block';
-                newsBlock.innerHTML = `<strong>${newsItem.title}</strong><p>${newsItem.content}</p>`;
-                newsContainer.appendChild(newsBlock);
-            });
-        } catch (error) {
-            console.error('Error loading news:', error);
-            const newsContainer = document.getElementById('news-container');
-            newsContainer.innerHTML = '<p>Failed to load news. Please try again later.</p>';
         }
-    }
 
         document.addEventListener('DOMContentLoaded', loadNews);
     </script>
