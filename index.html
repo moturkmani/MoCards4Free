@@ -168,6 +168,7 @@
             document.getElementById(tabId).classList.add('active');
         }
 
+        // Fetch and display images dynamically
         fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images/images.json')
             .then(response => response.json())
             .then(data => {
@@ -178,6 +179,7 @@
                 console.error('Error loading images:', error); // Debugging: Catch errors
             });
 
+        // Function to load images into the gallery
         function loadGalleryImages(folderBaseUrl, containerId, images) {
             const imageContainer = document.getElementById(containerId);
 
