@@ -44,12 +44,29 @@
             }
         }
         .news-block {
+            word-wrap: break-word; /* Ensures long words or URLs break to fit within the container */
+            white-space: normal; /* Allows text to wrap naturally */
+            line-height: 1.6; /* Improves readability with proper spacing between lines */
+            max-width: 100%; /* Keeps content within its container */
             margin: 20px 0;
             padding: 15px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             animation: scrollAnimation 1s;
+            box-sizing: border-box; /* Ensures padding does not exceed the width */
+            font-size: 16px;
+            color: #333;
+}
+
+        /* Ensure responsiveness for smaller screens */
+        @media (max-width: 768px) {
+            .news-block {
+                padding: 10px;
+                font-size: 14px;
+    }
+}
+
         }
         @keyframes scrollAnimation {
             from {
