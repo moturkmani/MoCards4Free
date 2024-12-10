@@ -121,7 +121,7 @@
         }
 
         // Fetch the JSON file containing image names
-        fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/blob/main/images/images.json')
+        fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images/images.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch JSON');
@@ -129,7 +129,7 @@
                 return response.json();
             })
             .then(data => {
-                loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/blob/main/images', 'gallery-images', data.images);
+                loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images', 'gallery-images', data.images);
             })
             .catch(error => console.error('Error fetching images:', error));
 
