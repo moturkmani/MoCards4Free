@@ -3,41 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Image Gallery</title>
+    <title>Pokémon Card Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .image-container {
+            width: 150px;
+            height: 200px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <h1>Image Gallery</h1>
-    <div id="gallery"></div>
+    <h1>Pokémon Card Gallery</h1>
+    <div class="image-gallery" id="gallery-images"></div>
 
     <script>
-        // Define the folder paths
-        const baseURL = './images';
-        const jsonFilePath = `${baseURL}/images.json`;
+        // Manually defined array of images
+        const images = [
+            'image1.jpg',
+            'image2.jpg',
+            'image3.jpg',
+            'image4.jpg',
+            'image5.jpg',
+            'image6.jpg'
+        ];
 
-        // Fetch and load images from the JSON file
-        fetch(jsonFilePath)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch the JSON file');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const galleryContainer = document.getElementById('gallery');
+        // Base URL for the images folder
+        const baseURL = 'main/images';
 
-                // Loop through images and create <img> elements
-                data.images.forEach(image => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = `${baseURL}/${image}`;
-                    imgElement.alt = 'Gallery Image';
-                    imgElement.style.width = '200px'; // Simple styling
-                    imgElement.style.margin = '10px';
-                    galleryContainer.appendChild(imgElement);
-                });
-            })
-            .catch(error => {
-                console.error('Error loading images:', error);
+        // Function to load and display images
+        function loadGalleryImages(images) {
+            const imageContainer = document.getElementById('gallery-images');
+            images.forEach(image => {
+                const imgElement = document.createElement('div');
+                imgElement.className = 'image-container';
+                imgElement.innerHTML = `<img src="${baseURL}/${image}" alt="Pokémon Card">`;
+                imageContainer.appendChild(imgElement);
             });
+        }
+
+        // Load images into the gallery
+        loadGalleryImages(images);
     </script>
 </body>
 </html>
