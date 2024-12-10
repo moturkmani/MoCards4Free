@@ -68,15 +68,6 @@
             height: 200px; /* Fixed tile size */
         }
 
-        /* Image tile behavior: Slide-in effect */
-        .image-container:nth-child(odd) {
-            animation-name: slide-in-left;
-        }
-
-        .image-container:nth-child(even) {
-            animation-name: slide-in-right;
-        }
-
         .image-container img {
             width: 100%; /* Ensure image takes the full width of the container */
             height: 100%;
@@ -85,31 +76,8 @@
             transition: transform 0.3s ease;
         }
 
-        /* Apply magnifying effect on hover */
         .image-container:hover img {
             transform: scale(1.5); /* Enlarge image */
-        }
-
-        @keyframes slide-in-left {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slide-in-right {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
         }
 
         @keyframes fade-in {
@@ -152,24 +120,26 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // Fetch the JSON file containing image names from GitHub
+        // Fetch the JSON file containing image names
         fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images/images.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch JSON');
+                }
+                return response.json();
+            })
             .then(data => {
                 loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/tree/main/images', 'gallery-images', data.images);
             })
-            .catch(error => console.log('Error fetching JSON:', error));
+            .catch(error => console.error('Error fetching images:', error));
 
-        // Load images into the gallery from the images.json file
+        // Load gallery images dynamically
         function loadGalleryImages(folderBaseUrl, containerId, images) {
             const imageContainer = document.getElementById(containerId);
-
-            images.forEach((image, index) => {
+            images.forEach((image) => {
                 const imgElement = document.createElement('div');
                 imgElement.className = 'image-container';
-                imgElement.innerHTML = `
-                    <img src="${folderBaseUrl}/${image}" alt="Pokémon Card ${index + 1}">
-                `;
+                imgElement.innerHTML = `<img src="${folderBaseUrl}/${image}" alt="Pokémon Card">`;
                 imageContainer.appendChild(imgElement);
             });
         }
