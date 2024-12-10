@@ -171,7 +171,11 @@
         fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images/images.json')
             .then(response => response.json())
             .then(data => {
+                console.log(data);  // Debugging: Check if the data is correctly fetched
                 loadGalleryImages('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images', 'gallery-images', data.images);
+            })
+            .catch(error => {
+                console.error('Error loading images:', error); // Debugging: Catch errors
             });
 
         function loadGalleryImages(folderBaseUrl, containerId, images) {
