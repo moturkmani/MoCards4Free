@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Card Website</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -63,7 +63,34 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadNews);
+        async function loadImages() {
+            try {
+                const response = await fetch('./images/images.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load image JSON');
+                }
+                const imageData = await response.json();
+                const galleryImages = document.getElementById('gallery-images');
+                galleryImages.innerHTML = ''; // Clear existing content
+
+                imageData.forEach(image => {
+                    const img = document.createElement('img');
+                    img.src = `./images/${image.src}`;
+                    img.alt = image.alt || 'Card Image';
+                    img.className = 'gallery-image'; // Add class for styling
+                    galleryImages.appendChild(img);
+                });
+            } catch (error) {
+                console.error('Error loading images:', error);
+                const galleryImages = document.getElementById('gallery-images');
+                galleryImages.innerHTML = '<p>Failed to load images. Please try again later.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadNews();
+            loadImages();
+        });
     </script>
 
 </body>
