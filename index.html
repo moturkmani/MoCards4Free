@@ -34,17 +34,7 @@
     </section>
 
     <script>
-        function showTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active')); // Hide all tabs
-            document.getElementById(tabId).classList.add('active'); // Show selected tab
-        
-            // Load images dynamically when the Card Gallery tab is shown
-            if (tabId === 'card-gallery') {
-                loadImages();
-            }
-        }
-        
+        // Load News Feed content
         async function loadNews() {
             try {
                 const response = await fetch('./news.json');
@@ -68,6 +58,7 @@
             }
         }
         
+        // Load images dynamically only when Card Gallery tab is activated
         async function loadImages() {
             try {
                 const response = await fetch('./images/images.json');
@@ -81,8 +72,8 @@
                 imageData.images.forEach(imageSrc => {
                     const img = document.createElement('img');
                     img.src = `./images/${imageSrc}`;
-                    img.alt = 'Pokémon card image'; // Generic alt text
-                    img.className = 'gallery-image'; // Add class for styling
+                    img.alt = 'Pokémon card image';
+                    img.className = 'gallery-image';
                     galleryImages.appendChild(img);
                 });
             } catch (error) {
@@ -91,10 +82,23 @@
                 galleryImages.innerHTML = '<p>Failed to load images. Please try again later.</p>';
             }
         }
-
+        
+        // Ensure everything loads after DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
-            loadNews(); // Load news on page load
-            // Images will load only when Card Gallery is opened
+            loadNews(); // Load news when the page loads
+            // Do not load images until Card Gallery tab becomes active
+        });
+        
+        // Load images only when Card Gallery tab is clicked
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        
+            // Load images dynamically when Card Gallery tab is activated
+            if (tabId === 'card-gallery') {
+                loadImages();
+            }
         });
     </script>
 
