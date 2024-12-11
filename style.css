@@ -50,31 +50,39 @@ nav a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive card gallery grid */
-#gallery-images {
-    display: grid;
-    gap: 10px; /* Space between images */
-    padding: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
-    justify-content: center;
-    align-items: start;
-}
-
-/* Individual image styling */
+/* Container styling to handle the zoom effect */
 .gallery-image {
     width: 100%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Start hidden for animation */
-    transform: translateX(-50px); /* Slide in from the left */
-    animation: slide-in 0.5s ease forwards; /* Apply slide-in animation */
+    transition: transform 0.3s ease; /* Smooth animation */
+    overflow: hidden;
+    position: relative; /* Required for zoom effect */
 }
 
-/* Hover effect for images */
-.gallery-image:hover {
-    transform: scale(1.1); /* Slight zoom on hover */
-    transition: transform 0.3s ease;
+/* Inner zoomed image */
+.gallery-image::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit; /* Use the image as the background */
+    background-size: 150%; /* 1.5x zoom */
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(1.5); /* Default zoom level */
+    transition: transform 0.3s ease, background-position 0.3s ease;
+    pointer-events: none; /* Prevent interfering with hover */
+}
+
+/* Hover effect: adjusts zoom based on mouse position */
+.gallery-image:hover::before {
+    transform: scale(1.5); /* Magnify */
+    background-position: center;
 }
 
 /* Keyframe animation for sliding images */
