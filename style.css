@@ -1,4 +1,3 @@
-/* General styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
@@ -6,7 +5,6 @@ body {
     padding: 0;
 }
 
-/* Navigation bar styles */
 nav {
     background-color: #343a40;
     color: white;
@@ -21,16 +19,14 @@ nav a {
     font-weight: bold;
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
-    text-align: center;
 }
 
 nav a:hover {
     text-decoration: underline;
 }
 
-/* Tab content styles */
 .tab-content {
-    display: none; /* Hide all tabs by default */
+    display: none;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -38,19 +34,9 @@ nav a:hover {
 }
 
 .tab-content.active {
-    display: block; /* Show active tab */
+    display: block;
 }
 
-/* News block styles */
-.news-block {
-    margin: 20px 0;
-    padding: 15px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Gallery grid container */
 #gallery-images {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -61,62 +47,33 @@ nav a:hover {
     margin: 0 auto;
 }
 
-/* Individual image tiles */
 .gallery-tile {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0;
-    transform-origin: center;
-    animation: tileAnimation 0.6s ease forwards;
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-/* Image inside tile */
 .gallery-tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-/* Hover effect: Magnify image */
 .gallery-tile:hover img {
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
 
-/* Animation for gallery tiles meeting in the center */
-@keyframes tileAnimation {
-    0% {
+@keyframes fadeIn {
+    from {
         opacity: 0;
-        transform: scale(0.8) translateX(-50%);
+        transform: scale(0.9);
     }
-    50% {
+    to {
         opacity: 1;
-        transform: scale(1.05) translateX(0);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.05) translateX(50%);
-    }
-}
-
-/* Responsive styles for smaller screens */
-@media (max-width: 768px) {
-    #gallery-images {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-}
-
-/* For larger screens (Desktop and Medium) */
-@media (min-width: 768px) {
-    #gallery-images {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
-@media (min-width: 1200px) {
-    #gallery-images {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        transform: scale(1);
     }
 }
