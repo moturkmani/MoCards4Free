@@ -4,11 +4,12 @@ body {
     background-color: #ffffff; /* white background for the body */
     margin: 0;
     padding: 0;
-    color: white; /* black text color */
+    color: white; /* white text color */
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Ensure full page height */
-    justify-content: space-between; /* Space out header, content, and footer */
+    min-height: 100vh; /* Ensure full page height */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 /* Navigation bar styles */
@@ -19,8 +20,13 @@ nav {
     justify-content: space-between; /* Ensure even spacing between tabs */
     align-items: center;
     padding: 1rem;
-    flex-wrap: wrap; /* Prevent tabs from wrapping to new rows */
+    flex-wrap: wrap; /* Allow wrapping if necessary */
     overflow: hidden; /* Ensure no horizontal scrolling */
+    position: fixed; /* Fix navigation bar at the top */
+    top: 0;
+    width: 100%; /* Full width of the viewport */
+    z-index: 1000; /* Ensure it stays above content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for separation */
 }
 
 nav a {
@@ -74,6 +80,7 @@ nav a:hover {
     color: black;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 80px; /* Space below the fixed navigation bar */
 }
 
 .tab-content.active {
@@ -84,7 +91,7 @@ nav a:hover {
 .news-block {
     margin: 20px 0;
     padding: 15px;
-    background: #FFFFFF; /* Purple background for news feed blocks */
+    background: #FFFFFF; /* White background for news feed blocks */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -141,6 +148,10 @@ nav a:hover {
         font-size: 0.8rem; /* Adjust font size for better fit */
         padding: 0.5rem 0.25rem; /* Reduce padding for tighter layout */
         flex: 1; /* Ensure tabs fit evenly across the screen */
+    }
+
+    .tab-content {
+        margin-top: 60px; /* Adjust spacing for smaller screens */
     }
 }
 
