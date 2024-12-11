@@ -11,24 +11,26 @@ nav {
     background-color: #343a40;
     color: white;
     display: flex;
-    justify-content: space-around; /* Ensure even spacing between tabs */
+    justify-content: space-around; /* Space tabs evenly within the screen */
     align-items: center;
-    padding: 1rem 2rem;
-    flex-wrap: nowrap; /* Prevent tabs from wrapping to new rows */
-    overflow-x: auto; /* Allow scrolling if tabs exceed screen width */
-    white-space: nowrap; /* Keep tabs content intact */
+    padding: 1rem;
+    flex-wrap: wrap; /* Allow tabs to wrap to new lines if needed */
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem; /* Add horizontal spacing between tabs */
+    padding: 0.5rem;
+    margin: 0 0.5rem; /* Space between tabs */
     text-align: center;
-    display: inline-block;
-    max-width: 100px; /* Restrict width to control wrapping */
-    word-wrap: break-word; /* Allow long words to break properly */
+    display: flex;
+    flex-direction: column; /* Stack wrapped text vertically */
+    justify-content: center;
+    align-items: center; /* Center text horizontally */
+    word-break: break-word; /* Allow long words to break to the next line */
+    max-width: calc(100% / 4 - 1rem); /* Ensure tabs fit within one row */
+    flex-grow: 1; /* Make tabs flexibly fill available space evenly */
 }
 
 nav a:hover {
@@ -103,12 +105,12 @@ nav a:hover {
 /* Mobile-specific adjustments */
 @media (max-width: 768px) {
     nav {
-        justify-content: space-between; /* Adjust spacing for smaller screens */
-        padding: 1rem;
+        padding: 0.5rem; /* Reduce padding to save space */
     }
     nav a {
         font-size: 0.8rem; /* Slightly smaller font size for better fit */
-        padding: 0.5rem; /* Adjust padding for tighter fit */
+        max-width: 100%; /* Ensure tabs adjust within the viewport */
+        padding: 0.5rem 0.25rem; /* Tighter padding for smaller screens */
     }
 }
 
