@@ -7,6 +7,31 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
+    <style>
+        #upcoming-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Two images side by side */
+            gap: 20px; /* Space between images */
+            justify-content: center; /* Center-align the grid items */
+            padding: 10px; /* Optional: Add padding around the grid */
+        }
+
+        .upcoming-tile {
+            background-color: #f0f0f0; /* Optional: Tile background color */
+            border: 1px solid #ccc; /* Optional: Border around each tile */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow effect */
+            overflow: hidden; /* Ensures no overflow from images */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upcoming-tile img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Preserve aspect ratio and fit image within the tile */
+        }
+    </style>
 </head>
 <body>
 
@@ -80,8 +105,8 @@
             <h2>Future Updates</h2>
             <p>Note that this game is currently in beta, so there may be some issues with certain answers. These will be addressed in future updates.</p>
         </div>
-
     </section>
+
     <!-- Social Media Icons -->
     <div class="social-media">
         <a href="https://www.tiktok.com/@freecards.triviagame" target="_blank">
