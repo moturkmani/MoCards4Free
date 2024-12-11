@@ -42,17 +42,14 @@
 
         async function loadNews() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/moturkmani/Cards4Free/main/images/news.json');
-                // Use a relative path for the local file
                 const response = await fetch('./news.json');
-        
                 if (!response.ok) {
                     throw new Error('Failed to load news JSON');
                 }
-        
                 const newsData = await response.json();
                 const newsContainer = document.getElementById('news-container');
-        
+                newsContainer.innerHTML = ''; // Clear existing content
+
                 newsData.forEach(newsItem => {
                     const newsBlock = document.createElement('div');
                     newsBlock.className = 'news-block';
