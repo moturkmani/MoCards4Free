@@ -66,6 +66,9 @@ nav a:hover {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInTile 0.5s ease forwards;
 }
 
 /* Image inside tile */
@@ -81,9 +84,28 @@ nav a:hover {
     transform: scale(1.5);
 }
 
+/* Animation for gallery tiles to meet in center */
+@keyframes fadeInTile {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     #gallery-images {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+/* For larger screens (Desktop) */
+@media (min-width: 1200px) {
+    #gallery-images {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
