@@ -16,17 +16,24 @@
     </nav>
 
     <section>
+        <!-- News Feed Tab -->
         <div id="news-feed" class="tab-content active">
             <h1>Here are the upcoming Lives!</h1>
             <div id="news-container"></div>
         </div>
+
+        <!-- Upcoming Cards Tab -->
         <div id="upcoming-cards" class="tab-content">
             <p>Details about upcoming cards.</p>
         </div>
+
+        <!-- Card Gallery Tab -->
         <div id="card-gallery" class="tab-content">
             <p>Below are all the cards you can win.</p>
             <div id="gallery-images"></div>
         </div>
+
+        <!-- How to Play Tab -->
         <div id="how-to-play" class="tab-content">
             <h1>How to Play</h1>
             <p>Instructions on how to play the Pokémon card game.</p>
@@ -44,7 +51,7 @@
                 const newsData = await response.json();
                 const newsContainer = document.getElementById('news-container');
                 newsContainer.innerHTML = ''; // Clear existing content
-        
+
                 newsData.forEach(newsItem => {
                     const newsBlock = document.createElement('div');
                     newsBlock.className = 'news-block';
@@ -57,7 +64,7 @@
                 newsContainer.innerHTML = '<p>Failed to load news. Please try again later.</p>';
             }
         }
-        
+
         // Load images dynamically only when Card Gallery tab is activated
         async function loadImages() {
             try {
@@ -68,13 +75,12 @@
                 const imageData = await response.json();
                 const galleryImages = document.getElementById('gallery-images');
                 galleryImages.innerHTML = ''; // Clear existing content
-        
+
                 imageData.images.forEach(imageSrc => {
-                    const img = document.createElement('img');
-                    img.src = `./images/${imageSrc}`;
-                    img.alt = 'Pokémon card image';
-                    img.className = 'gallery-image';
-                    galleryImages.appendChild(img);
+                    const div = document.createElement('div');
+                    div.className = 'gallery-tile';
+                    div.innerHTML = `<img src="./images/${imageSrc}" alt="Pokémon card image">`;
+                    galleryImages.appendChild(div);
                 });
             } catch (error) {
                 console.error('Error loading images:', error);
@@ -82,20 +88,18 @@
                 galleryImages.innerHTML = '<p>Failed to load images. Please try again later.</p>';
             }
         }
-        
+
         // Ensure everything loads after DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             loadNews(); // Load news when the page loads
-            // Do not load images until Card Gallery tab becomes active
         });
-        
+
         // Load images only when Card Gallery tab is clicked
         function showTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-        
-            // Load images dynamically when Card Gallery tab is activated
+
             if (tabId === 'card-gallery') {
                 loadImages();
             }
