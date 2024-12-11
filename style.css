@@ -31,10 +31,14 @@ nav a:hover {
 /* Tab content styles */
 .tab-content {
     display: none; /* Hide all tabs by default */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .tab-content.active {
-    display: block; /* Only display the active tab */
+    display: block; /* Show active tab */
 }
 
 /* News block styles */
@@ -46,12 +50,73 @@ nav a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Responsive card gallery grid */
+#gallery-images {
+    display: grid;
+    gap: 10px; /* Space between images */
+    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    justify-content: center;
+    align-items: start;
+}
+
+/* Individual image styling */
+.gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Start hidden for animation */
+    transform: translateX(-50px); /* Slide in from the left */
+    animation: slide-in 0.5s ease forwards; /* Apply slide-in animation */
+}
+
+/* Hover effect for images */
+.gallery-image:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    transition: transform 0.3s ease;
+}
+
+/* Keyframe animation for sliding images */
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Alternate animation for right-to-left sliding */
+.gallery-image:nth-child(even) {
+    animation: slide-in-alt 0.5s ease forwards;
+}
+
+@keyframes slide-in-alt {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
+        align-items: center;
     }
 
     nav a {
         margin: 0.5rem 0;
+    }
+
+    #gallery-images {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust grid for smaller screens */
     }
 }
