@@ -12,23 +12,18 @@ nav {
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 1rem 2rem;
-    position: relative;
-    z-index: 2; /* Ensures nav remains clickable */
 }
 
-/* Adjust nav links for even spacing */
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
     text-align: center;
-    margin: 0 1rem; /* Adds space between links */
 }
 
-/* Change link appearance on hover */
 nav a:hover {
     text-decoration: underline;
 }
@@ -37,25 +32,17 @@ nav a:hover {
 .tab-content {
     display: none;
     padding: 20px;
-    position: relative;
-    z-index: 1; /* Ensures content doesn’t block interaction with nav links */
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    pointer-events: auto; /* Makes sure interactions work */
 }
 
 .tab-content.active {
     display: block;
-    pointer-events: auto;
 }
 
 /* News block styles */
 .news-block {
-    word-wrap: break-word;
-    white-space: normal;
-    line-height: 1.6;
-    max-width: 100%;
     margin: 20px 0;
     padding: 15px;
     background: white;
@@ -63,21 +50,12 @@ nav a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     nav {
-        flex-direction: row; /* Ensures nav items stay on a single row */
-        justify-content: space-around; /* Distributes links evenly with space around them */
-        padding: 0.5rem;
+        flex-direction: column;
     }
 
     nav a {
-        padding: 0.5rem;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    nav a:hover {
-        text-decoration: none;
+        margin: 0.5rem 0;
     }
 }
