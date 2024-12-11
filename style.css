@@ -135,7 +135,18 @@ section p {
     box-sizing: border-box;
     margin: 0 auto;
 }
-
+.upcoming-tile {
+    width: 200px; /* or any desired width */
+    height: 200px;
+    overflow: hidden;
+    display: inline-block;
+    margin: 10px;
+}
+.upcoming-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fits within the tile without distortion */
+}
 /* Individual image tiles */
 .gallery-tile {
     position: relative;
