@@ -61,28 +61,10 @@ nav a:hover {
     position: relative; /* Required for zoom effect */
 }
 
-/* Inner zoomed image */
-.gallery-image::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: inherit; /* Use the image as the background */
-    background-size: 150%; /* 1.5x zoom */
-    background-repeat: no-repeat;
-    background-position: center;
-    transform: scale(1.5); /* Default zoom level */
-    transition: transform 0.3s ease, background-position 0.3s ease;
-    pointer-events: none; /* Prevent interfering with hover */
-}
-
-/* Hover effect: adjusts zoom based on mouse position */
-.gallery-image:hover::before {
-    transform: scale(1.5); /* Magnify */
-    background-position: center;
+/* Hover effect: Magnify image */
+.gallery-image:hover {
+    transform: scale(1.5); /* Magnify the image */
+    transition: transform 0.3s ease; /* Smooth zoom transition */
 }
 
 /* Keyframe animation for sliding images */
