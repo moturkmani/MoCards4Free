@@ -5,20 +5,7 @@ body {
     margin: 0;
     padding: 0;
 }
-.gallery-image {
-    width: 150px;
-    height: auto;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
 
-#gallery-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
 /* Navigation bar styles */
 nav {
     background-color: #343a40;
