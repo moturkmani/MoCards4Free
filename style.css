@@ -5,6 +5,10 @@ body {
     margin: 0;
     padding: 0;
     color: white; /* White text color */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ensure full page height */
+    justify-content: space-between; /* Space out header, content, and footer */
 }
 
 /* Navigation bar styles */
@@ -19,24 +23,27 @@ nav {
     overflow: hidden; /* Ensure no horizontal scrolling */
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin: 0; /* No extra margin to fit all tabs */
-    text-align: center;
+/* Social Media Icons */
+.social-media {
     display: flex;
-    flex-direction: column; /* Stack wrapped text vertically */
-    justify-content: center;
-    align-items: center; /* Center text horizontally */
-    word-break: break-word; /* Allow long words to break to the next line */
-    flex: 1; /* Make all tabs share equal width */
-    max-width: none; /* Prevent unnecessary size restrictions */
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center; /* Vertically align icons */
+    margin-top: 20px; /* Space above the icons */
+    padding: 10px;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.social-media a {
+    margin: 0 15px; /* Evenly space the icons */
+}
+
+.social-icon {
+    width: 40px; /* Set size of the icons */
+    height: 40px; /* Maintain square aspect ratio */
+    transition: transform 0.3s ease; /* Smooth transform for hover effect */
+}
+
+.social-icon:hover {
+    transform: scale(1.2); /* Slight zoom effect on hover */
 }
 
 /* Tab content styles */
