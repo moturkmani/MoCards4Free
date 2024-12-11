@@ -70,7 +70,7 @@
         
         async function loadImages() {
             try {
-                const response = await fetch('./images/images.json');
+                const response = await fetch('./images/image.json');
                 if (!response.ok) {
                     throw new Error('Failed to load image JSON');
                 }
@@ -78,11 +78,15 @@
                 const galleryImages = document.getElementById('gallery-images');
                 galleryImages.innerHTML = ''; // Clear existing content
         
-                imageData.images.forEach(imageSrc => {
+                imageData.images.forEach((imageSrc, index) => {
                     const img = document.createElement('img');
                     img.src = `./images/${imageSrc}`;
                     img.alt = 'Pokémon card image'; // Generic alt text
                     img.className = 'gallery-image'; // Add class for styling
+        
+                    // Add animation delay for cascading effect
+                    img.style.animationDelay = `${index * 0.1}s`;
+        
                     galleryImages.appendChild(img);
                 });
             } catch (error) {
