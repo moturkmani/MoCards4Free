@@ -30,15 +30,11 @@ nav a:hover {
 
 /* Tab content styles */
 .tab-content {
-    display: none;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: none; /* Hide all tabs by default */
 }
 
 .tab-content.active {
-    display: block;
+    display: block; /* Only display the active tab */
 }
 
 /* News block styles */
