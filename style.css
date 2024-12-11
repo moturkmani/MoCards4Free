@@ -4,7 +4,7 @@ body {
     background-color: #ffffff; /* white background for the body */
     margin: 0;
     padding: 0;
-    color: black; /* black text color */
+    color: white; /* black text color */
     display: flex;
     flex-direction: column;
     height: 100vh; /* Ensure full page height */
@@ -51,7 +51,7 @@ nav {
     display: none; /* Hide all tabs by default */
     padding: 20px;
     background-color: #6A1B9A; /* Purple background for the tab content */
-    color: white;
+    color: black;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
