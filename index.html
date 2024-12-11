@@ -70,7 +70,7 @@
         
         async function loadImages() {
             try {
-                const response = await fetch('./images/images.json');
+                const response = await fetch('./images/image.json');
                 if (!response.ok) {
                     throw new Error('Failed to load image JSON');
                 }
@@ -79,10 +79,11 @@
                 galleryImages.innerHTML = ''; // Clear existing content
         
                 imageData.images.forEach(imageSrc => {
-                    const div = document.createElement('div');
-                    div.className = 'gallery-image';
-                    div.style.backgroundImage = `url('./images/${imageSrc}')`; // Set as background
-                    galleryImages.appendChild(div);
+                    const img = document.createElement('img');
+                    img.src = `./images/${imageSrc}`;
+                    img.alt = 'Pokémon card image'; // Generic alt text
+                    img.className = 'gallery-image'; // Add class for styling
+                    galleryImages.appendChild(img);
                 });
             } catch (error) {
                 console.error('Error loading images:', error);
@@ -90,6 +91,7 @@
                 galleryImages.innerHTML = '<p>Failed to load images. Please try again later.</p>';
             }
         }
+
         document.addEventListener('DOMContentLoaded', () => {
             loadNews(); // Load news on page load
             // Images will load only when Card Gallery is opened
