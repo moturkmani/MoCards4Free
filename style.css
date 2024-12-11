@@ -68,9 +68,14 @@ section h1, section h2 {
 }
 
 section p {
-    color: black; /* White color for paragraph text */
+    color: white; /* Default white text for paragraph text */
     line-height: 1.6; /* Improve readability with line height */
     margin-bottom: 15px; /* Add spacing below paragraphs */
+}
+
+/* Specific styling for News Feed tab */
+#news-feed p {
+    color: black; /* Black text for the news feed page */
 }
 
 /* Social Media Icons */
