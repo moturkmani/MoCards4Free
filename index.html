@@ -70,7 +70,7 @@
         
         async function loadImages() {
             try {
-                const response = await fetch('./images/image.json');
+                const response = await fetch('./images/images.json');
                 if (!response.ok) {
                     throw new Error('Failed to load image JSON');
                 }
