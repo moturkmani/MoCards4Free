@@ -36,10 +36,15 @@
     <script>
         function showTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+            tabs.forEach(tab => tab.classList.remove('active')); // Hide all tabs
+            document.getElementById(tabId).classList.add('active'); // Show selected tab
+        
+            // Load images dynamically when the Card Gallery tab is shown
+            if (tabId === 'card-gallery') {
+                loadImages();
+            }
         }
-
+        
         async function loadNews() {
             try {
                 const response = await fetch('./news.json');
@@ -49,7 +54,7 @@
                 const newsData = await response.json();
                 const newsContainer = document.getElementById('news-container');
                 newsContainer.innerHTML = ''; // Clear existing content
-
+        
                 newsData.forEach(newsItem => {
                     const newsBlock = document.createElement('div');
                     newsBlock.className = 'news-block';
@@ -62,34 +67,34 @@
                 newsContainer.innerHTML = '<p>Failed to load news. Please try again later.</p>';
             }
         }
-
+        
         async function loadImages() {
-        try {
-            const response = await fetch('./images/images.json');
-            if (!response.ok) {
-                throw new Error('Failed to load image JSON');
+            try {
+                const response = await fetch('./images/image.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load image JSON');
+                }
+                const imageData = await response.json();
+                const galleryImages = document.getElementById('gallery-images');
+                galleryImages.innerHTML = ''; // Clear existing content
+        
+                imageData.images.forEach(imageSrc => {
+                    const img = document.createElement('img');
+                    img.src = `./images/${imageSrc}`;
+                    img.alt = 'Pokémon card image'; // Generic alt text
+                    img.className = 'gallery-image'; // Add class for styling
+                    galleryImages.appendChild(img);
+                });
+            } catch (error) {
+                console.error('Error loading images:', error);
+                const galleryImages = document.getElementById('gallery-images');
+                galleryImages.innerHTML = '<p>Failed to load images. Please try again later.</p>';
             }
-            const imageData = await response.json();
-            const galleryImages = document.getElementById('gallery-images');
-            galleryImages.innerHTML = ''; // Clear existing content
-    
-            imageData.images.forEach(imageSrc => {
-                const img = document.createElement('img');
-                img.src = `./images/${imageSrc}`;
-                img.alt = 'Pokémon card image'; // Generic alt text
-                img.className = 'gallery-image'; // Add class for styling
-                galleryImages.appendChild(img);
-            });
-        } catch (error) {
-            console.error('Error loading images:', error);
-            const galleryImages = document.getElementById('gallery-images');
-            galleryImages.innerHTML = '<p>Failed to load images. Please try again later.</p>';
         }
-    }
-
+        
         document.addEventListener('DOMContentLoaded', () => {
-            loadNews();
-            loadImages();
+            loadNews(); // Load news on page load
+            // Images will load only when Card Gallery is opened
         });
     </script>
 
