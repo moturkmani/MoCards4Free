@@ -12,34 +12,60 @@
 
     <nav>
         <a href="#" onclick="showTab('news-feed')"><span>News Feed</span></a>
-        <a href="#" onclick="showTab('upcoming-cards')"><span>Upcoming Cards</a>
         <a href="#" onclick="showTab('card-gallery')"><span>Card Gallery</a>
-        <a href="#" onclick="showTab('how-to-play')"><span>How to Play</a>
+        <a href="#" onclick="showTab('upcoming-cards')"><span>Upcoming Cards</a>
+        <a href="#" onclick="showTab('how-to-play')"><span>How to Play & Win</a>
     </nav>
 
     <section>
         <!-- News Feed Tab -->
         <div id="news-feed" class="tab-content active">
-            <h1>Here are the upcoming Lives!</h1>
+            <h1>This is the schedule for Live events! Schedule is not guaranteed and could change due to a baby running around.</h1>
             <div id="news-container"></div>
-        </div>
-
-        <!-- Upcoming Cards Tab -->
-        <div id="upcoming-cards" class="tab-content">
-            <p>Details about upcoming cards.</p>
         </div>
 
         <!-- Card Gallery Tab -->
         <div id="card-gallery" class="tab-content">
-            <p>Below are all the cards you can win.</p>
+            <p>Below are pictures of cards you can win by joining the Live. This event is 100% FREE and participants are chosen at random.
+               People who donate (min. $5) via gifts can automatically be a participant in the trivia game. If there are multiple people gifting,
+               you will be entered in a queue. Again, you can play the trivia game for free if you interact with the host and are chosen.
+            </p>
             <div id="gallery-images"></div>
+        </div>
+        
+        <!-- Upcoming Cards Tab -->
+        <div id="upcoming-cards" class="tab-content">
+            <p>The card list should be continuously expanding! I will try and include new cards in the prize pool via Youtube/Tiktok gifts.
+               Cards that are highly desired for the prize pool will be displayed here. 
+            </p>
         </div>
 
         <!-- How to Play Tab -->
         <div id="how-to-play" class="tab-content">
             <h1>How to Play</h1>
-            <p>Instructions on how to play the Pokémon card game.</p>
+            <p>Welcome to the game! Here's how it works:</p>
+        
+            <h2>Game Setup</h2>
+            <p>The game is built using a Python script that handles a large pool of questions with predefined answers. The script features a simple graphical user interface (GUI) that runs in PowerShell. As you play, you’ll be presented with dialogs containing questions that require your input.</p>
+        
+            <h2>Choosing Your Difficulty</h2>
+            <p>At the start, you'll select a region to begin the game. Then, you can choose how many questions you'd like to answer: 3, 6, or 10. These questions are selected at random and can vary in difficulty.</p>
+        
+            <h2>Answering Questions</h2>
+            <p>Once you’ve been selected as a participant, the game will present you with your randomly chosen questions. Each answer will be checked automatically, and the game keeps track of how many correct answers you give. At the end of your round, if you’ve answered at least 80% of the questions correctly, you’ll be considered the winner!</p>
+        
+            <h2>Winning and Prize Selection</h2>
+            <p>If you win, you’ll have the option to roll up to three dice, along with choosing a number between 1-10. The sum of the dice rolls and your number will determine your prize from the card briefcase. Depending on how many questions you answered, you’ll have different chances to try for a new card:</p>
+            <ul>
+                <li><strong>3 questions</strong>: 1 chance to roll for a new card</li>
+                <li><strong>6 questions</strong>: 2 chances to roll for a new card</li>
+                <li><strong>10 questions</strong>: 3 chances to roll for a new card</li>
+            </ul>
+        
+            <h2>Future Updates</h2>
+            <p>Note that this game is currently in beta, so there may be some issues with certain answers. These will be addressed in future updates.</p>
         </div>
+
     </section>
     <!-- Social Media Icons -->
     <div class="social-media">
