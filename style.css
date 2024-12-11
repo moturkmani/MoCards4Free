@@ -68,7 +68,7 @@ section h1, section h2 {
 }
 
 section p {
-    color: white; /* White color for paragraph text */
+    color: black; /* White color for paragraph text */
     line-height: 1.6; /* Improve readability with line height */
     margin-bottom: 15px; /* Add spacing below paragraphs */
 }
