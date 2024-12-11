@@ -11,9 +11,12 @@ nav {
     background-color: #343a40;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-around; /* Ensure even spacing between tabs */
+    align-items: center;
     padding: 1rem 2rem;
-    flex-wrap: wrap; /* Allow wrapping of tabs on small screens */
+    flex-wrap: nowrap; /* Prevent tabs from wrapping to new rows */
+    overflow-x: auto; /* Allow scrolling if tabs exceed screen width */
+    white-space: nowrap; /* Keep tabs content intact */
 }
 
 nav a {
@@ -21,21 +24,13 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     padding: 0.5rem 1rem;
-    margin: 0.5rem; /* Add margin for spacing between tabs */
+    margin: 0 0.5rem; /* Add horizontal spacing between tabs */
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Ensure proper alignment */
-    text-align: center;
+    display: inline-block;
+    max-width: 100px; /* Restrict width to control wrapping */
+    word-wrap: break-word; /* Allow long words to break properly */
 }
 
-/* Allow text to break into multiple lines while centering */
-nav a span {
-    display: inline-block; /* Ensures lines remain centered with each other */
-    text-align: center; 
-}
-
-/* Hover effect for navigation tabs */
 nav a:hover {
     text-decoration: underline;
 }
@@ -80,10 +75,9 @@ nav a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0;
-    animation: fadeIn 0.3s ease-out forwards; /* Reduced duration for quicker fade-in */
+    animation: fadeIn 0.3s ease-out forwards;
 }
 
-/* Image inside tile */
 .gallery-tile img {
     width: 100%;
     height: 100%;
@@ -91,34 +85,33 @@ nav a:hover {
     transition: transform 0.3s ease;
 }
 
-/* Hover effect: Magnify image */
 .gallery-tile:hover img {
     transform: scale(1.1);
 }
 
-/* Faster Animation for gallery tiles */
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: scale(0.95); /* Slightly smaller scale for initial effect */
+        transform: scale(0.95);
     }
     100% {
         opacity: 1;
-        transform: scale(1); /* Full size at the end */
+        transform: scale(1);
     }
 }
 
 /* Mobile-specific adjustments */
 @media (max-width: 768px) {
     nav {
-        justify-content: space-evenly; /* Ensure tabs are evenly spaced horizontally */
+        justify-content: space-between; /* Adjust spacing for smaller screens */
+        padding: 1rem;
     }
     nav a {
-        flex-basis: 30%; /* Adjust tab width for smaller screens */
+        font-size: 0.8rem; /* Slightly smaller font size for better fit */
+        padding: 0.5rem; /* Adjust padding for tighter fit */
     }
 }
 
-/* Responsive styles for gallery */
 @media (max-width: 768px) {
     #gallery-images {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
