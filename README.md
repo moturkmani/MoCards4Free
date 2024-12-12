@@ -33,6 +33,7 @@ The **MyCards4Free** project is a gallery-based web application designed to show
 ```
 MyCards4Free/
 ├── index.html                                    # Main HTML file for the website.
+├── favicon.png                                   # Main favicon.
 ├── images/                                       # Folder where the images are located.
 ├── images/images.json                            # JSON File with image name array.
 ├── assets/upcoming_images                        # Folder where the images are located for the Upcoming Cards tab.
