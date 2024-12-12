@@ -22,7 +22,7 @@ The **MyCards4Free** project is a gallery-based web application designed to show
 
 ### **Key Features**
 - **Dynamic Image Display**:
-  - The gallery dynamically loads images from a centralized `images/` folder.
+  - The gallery dynamically loads images from a centralized `images/` & 'upcoming-images/' folder.
   - This ensures scalability and ease of maintenance for large collections.
   
 - **User Experience Enhancements**:
@@ -32,24 +32,29 @@ The **MyCards4Free** project is a gallery-based web application designed to show
 ### **Folder Structure**
 ```
 MyCards4Free/
-├── index.html          # Main HTML file for the website.
-├── images/             # Folder where the images are located.
-├── README.md           # File containing details about the trivia game and structure.
-├── news.json           # File containing news blocks that will be fetched for the News Feed tab.
-├── style.css           # File containing the styles for the website.
-├── CNAME               # Contains the URL for the registered domain.
+├── index.html                                    # Main HTML file for the website.
+├── images/                                       # Folder where the images are located.
+├── images/images.json                            # JSON File with image name array.
+├── assets/upcoming_images                        # Folder where the images are located for the Upcoming Cards tab.
+├── assets/upcoming_images/upcoming-images.json   # JSON file with upcoming card name array.
+├── assets/upcoming_images/tiktok.png             # Icon image for tiktok website re-direct .
+├── assets/upcoming_images/youtube.png            # Icon image for youtube website re-direct.
+├── README.md                                     # File containing details about the trivia game and structure.
+├── news.json                                     # File containing news blocks that will be fetched for the News Feed tab.
+├── style.css                                     # File containing the styles for the website.
+├── CNAME                                         # Contains the URL for the registered domain.
 
 ### **Getting Started**
 1. **Setup**:
    - Clone the repository or download the project files from [GitHub](https://github.com/moturkmani/MyCards4Free).
 
 2. **Add Images**:
-   - Place new Pokémon card images in the `images/` folder.
+   - Place new Pokémon card images in the `images/` or 'assets/upcoming_images' folder.
    - Ensure file names are unique and extensions are correct.
 
 3. **Host the Website**:
    - The website is hosted using GitHub Pages.
-   - The live URL for accessing the gallery is: `https://moturkmani.github.io/Cards4Free` which should now be linked to www.mycards4free.com.
+   - The live URL for accessing the gallery is: `www.mycards4free.com'.
 
 4. **Customizing the Trivia Game**:
    - Integrate your trivia game logic into the python script titled 'pokemon_triviagame.py'.
