@@ -146,18 +146,18 @@
         // Load images dynamically for the Card Gallery tab
         async function loadImages() {
             try {
-                const response = await fetch('./images/images.json');
+                const response = await fetch('./images/images.json'); // Ensure the JSON file path is correct
                 if (!response.ok) {
                     throw new Error('Failed to load image JSON');
                 }
                 const imageData = await response.json();
                 const galleryImages = document.getElementById('gallery-images');
                 galleryImages.innerHTML = ''; // Clear existing content
-
+        
                 imageData.images.forEach(imageSrc => {
                     const div = document.createElement('div');
                     div.className = 'gallery-tile';
-                    div.innerHTML = `<img src="./images/${imageSrc}" alt="Pokémon card image">`;
+                    div.innerHTML = `<img src="${imageSrc}" alt="Pokémon card image">`; // Use the full URL from the JSON
                     galleryImages.appendChild(div);
                 });
             } catch (error) {
@@ -166,22 +166,22 @@
                 galleryImages.innerHTML = '<p>Failed to load images. Please try again later.</p>';
             }
         }
-
+        
         // Load images dynamically for the Upcoming Cards tab
         async function loadUpcomingImages() {
             try {
-                const response = await fetch('./assets/upcoming_images/upcoming-images.json');
+                const response = await fetch('./assets/upcoming_images/upcoming-images.json'); // Ensure the JSON file path is correct
                 if (!response.ok) {
                     throw new Error('Failed to load upcoming images JSON');
                 }
                 const imageData = await response.json();
                 const upcomingImages = document.getElementById('upcoming-images');
                 upcomingImages.innerHTML = ''; // Clear existing content
-
+        
                 imageData.images.forEach(imageSrc => {
                     const div = document.createElement('div');
                     div.className = 'upcoming-tile';
-                    div.innerHTML = `<img src="./assets/upcoming_images/${imageSrc}" alt="Upcoming card image">`;
+                    div.innerHTML = `<img src="${imageSrc}" alt="Upcoming card image">`; // Use the full URL from the JSON
                     upcomingImages.appendChild(div);
                 });
             } catch (error) {
@@ -190,7 +190,6 @@
                 upcomingImages.innerHTML = '<p>Failed to load upcoming images. Please try again later.</p>';
             }
         }
-
         // Handle tab switching and load data as needed
         function showTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
