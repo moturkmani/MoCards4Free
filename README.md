@@ -1,9 +1,9 @@
 # README.txt
 
-## **MyCards4Free - Pokémon Card Giveaway Gallery**
+## **MoCards4Free - Pokémon Card Giveaway Gallery**
 
 ### **Purpose**
-The **MyCards4Free** project is a gallery-based web application designed to showcase a collection of Pokémon cards that participants can win during live events via my developed trivia game. The cards displayed in the gallery serve as prizes for individuals selected to play the trivia game. The live event schedule will be posted under the News Feed tab on the web page. 
+The **MoCards4Free** project is a gallery-based web application designed to showcase a collection of Pokémon cards that participants can win during live events via my developed trivia game. The cards displayed in the gallery serve as prizes for individuals selected to play the trivia game. The live event schedule will be posted under the News Feed tab on the web page. 
 
 ### **How It Works**
 1. **On The Webpage**:
@@ -31,7 +31,7 @@ The **MyCards4Free** project is a gallery-based web application designed to show
 
 ### **Folder Structure**
 ```
-MyCards4Free/
+MoCards4Free/
 ├── index.html                                    # Main HTML file for the website.
 ├── favicon.png                                   # Main favicon.
 ├── images/                                       # Folder where the images are located.
@@ -47,7 +47,7 @@ MyCards4Free/
 
 ### **Getting Started**
 1. **Setup**:
-   - Clone the repository or download the project files from [GitHub](https://github.com/moturkmani/MyCards4Free).
+   - Clone the repository or download the project files from [GitHub](https://github.com/moturkmani/MoCards4Free).
 
 2. **Add Images**:
    - Place new Pokémon card images in the `images/` or 'assets/upcoming_images' folder.
@@ -55,7 +55,7 @@ MyCards4Free/
 
 3. **Host the Website**:
    - The website is hosted using GitHub Pages.
-   - The live URL for accessing the gallery is: `www.mycards4free.com'.
+   - The live URL for accessing the gallery is: `www.mocards4free.com'.
 
 4. **Customizing the Trivia Game**:
    - Integrate your trivia game logic into the python script titled 'pokemon_triviagame.py'.
