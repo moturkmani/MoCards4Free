@@ -209,6 +209,7 @@ section p {
 @media (max-width: 768px) {
     #gallery-images {
         grid-template-columns: repeat(2, 1fr));
+        gap: 16px;
     }
 }
 
