@@ -82,7 +82,7 @@ section p {
 .social-media {
     display: flex;
     justify-content: center; /* Center the icons horizontally */
-    align-items: center; /* Vertically align icons */
+    align-items: center;
     margin-top: 20px; /* Space above the icons */
     padding: 10px;
 }
@@ -135,32 +135,8 @@ section p {
     box-sizing: border-box;
     margin: 0 auto;
 }
-#upcoming-images {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Two images side by side */
-    gap: 20px; /* Space between images */
-    justify-content: center; /* Center-align the grid items */
-    padding: 10px; /* Optional: Add padding around the grid */
-}
 
-.upcoming-tile {
-    background-color: #f0f0f0; /* Optional: Tile background color */
-    border: 1px solid #ccc; /* Optional: Border around each tile */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow effect */
-    overflow: hidden; /* Ensures no overflow from images */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.upcoming-tile img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Preserve aspect ratio and fit image within the tile */
-}
-/* General styles remain the same... */
-
-/* Individual image tiles */
+/* Magnifying glass effect for gallery tiles */
 .gallery-tile {
     position: relative;
     overflow: hidden;
@@ -182,10 +158,6 @@ section p {
     cursor: none; /* Hide the default cursor */
 }
 
-.gallery-tile:hover {
-    cursor: none; /* Hide the default cursor */
-}
-
 .gallery-tile::before {
     content: '';
     position: absolute;
@@ -202,38 +174,9 @@ section p {
     background: rgba(0, 0, 0, 0.4); /* Darken the overlay on hover */
 }
 
-.gallery-tile:hover img {
-    pointer-events: none;
-}
-
-/* Ensure the mouse movement updates the position dynamically */
+/* Ensure the mouse movement updates the position */
 .gallery-tile:hover img {
     transform: none; /* The transform will be applied dynamically via JavaScript */
-}
-
-/* Existing styles for gallery grid */
-#gallery-images {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    padding: 20px;
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto;
-}
-
-/* Media queries and other styles remain the same... */
-
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
 
 /* Mobile-specific adjustments */
