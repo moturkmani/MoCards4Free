@@ -73,7 +73,9 @@ section p {
 }
 
 /* Specific styling for News Feed tab */
-
+#news-feed {
+    color: black; /* Change to your desired color */
+}
 
 /* Social Media Icons */
 .social-media {
