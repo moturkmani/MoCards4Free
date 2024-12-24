@@ -72,11 +72,6 @@ section p {
     margin-bottom: 15px; /* Add spacing below paragraphs */
 }
 
-/* Specific styling for News Feed tab */
-#news-feed {
-    color: #333333; /* Change to your desired color */
-}
-
 /* Social Media Icons */
 .social-media {
     display: flex;
@@ -119,7 +114,7 @@ section p {
 .news-block {
     margin: 20px 0;
     padding: 15px;
-    background: white; /* White background for news feed blocks */
+    background: #512D6D; /* White background for news feed blocks */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
