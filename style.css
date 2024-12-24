@@ -114,7 +114,7 @@ section p {
 .news-block {
     margin: 20px 0;
     padding: 15px;
-    background: gold; /* White background for news feed blocks */
+    background: #C282FF; /* light purple background for news feed blocks */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
