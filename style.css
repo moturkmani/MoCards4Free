@@ -4,7 +4,7 @@ body {
     background-color: #000000; /* white background for the body */
     margin: 0;
     padding: 0;
-    color: white; /* white text color */
+    color: #333333; /* white text color */
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure full page height */
