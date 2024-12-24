@@ -73,8 +73,11 @@ section p {
 }
 
 /* Specific styling for News Feed tab */
-#news-feed {
-    color: #FFFFFF; /* Change to your desired color */
+#news-feed p {
+    color: #FFFFFF;
+}
+#news-feed h1 {
+    color: #007BFF;
 }
 
 /* Social Media Icons */
