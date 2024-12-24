@@ -49,7 +49,9 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
-
+.how-to-play strong {
+    color: #c282ff;
+}
 /* Section styles */
 section {
     width: 100%; /* Full width of the container */
