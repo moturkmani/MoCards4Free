@@ -204,6 +204,10 @@ section p {
     .tab-content {
         margin-top: 60px; /* Adjust spacing for smaller screens */
     }
+
+    #gallery-images {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
@@ -221,5 +225,41 @@ section p {
 @media (min-width: 1200px) {
     #gallery-images {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Mobile-specific adjustments for the How to Play tab */
+@media (max-width: 768px) {
+    #how-to-play {
+        padding: 10px; /* Add padding for better spacing */
+        font-size: 0.9rem; /* Adjust font size for readability */
+        line-height: 1.4; /* Increase line height for easier reading */
+    }
+
+    #how-to-play h1 {
+        font-size: 1.2rem; /* Reduce heading size for mobile */
+        margin-bottom: 10px; /* Add spacing below headings */
+    }
+
+    #how-to-play ul {
+        padding-left: 20px; /* Add space for nested lists */
+    }
+
+    #how-to-play li {
+        margin-bottom: 10px; /* Add spacing between list items */
+    }
+
+    #how-to-play strong {
+        display: block; /* Break strong elements to new lines for better mobile layout */
+        margin-bottom: 5px; /* Add spacing below strong elements */
+    }
+
+    #how-to-play ul ul {
+        margin-left: 10px; /* Reduce indent for nested lists */
+        font-size: 0.85rem; /* Smaller font for deeply nested items */
+    }
+
+    #how-to-play ul li ul li {
+        margin-bottom: 5px; /* Reduce spacing for nested list items */
     }
 }
