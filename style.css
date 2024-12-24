@@ -73,9 +73,7 @@ section p {
 }
 
 /* Specific styling for News Feed tab */
-#news-feed {
-    color: white;
-}
+
 
 /* Social Media Icons */
 .social-media {
@@ -119,7 +117,7 @@ section p {
 .news-block {
     margin: 20px 0;
     padding: 15px;
-    background: #FFFFFF; /* White background for news feed blocks */
+    background: white; /* White background for news feed blocks */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
